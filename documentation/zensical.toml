@@ -1,0 +1,160 @@
+[project]
+dev_addr = "127.0.0.1:9003" # on windows recomends to change to 8000
+
+site_name = "Oferta Disciplina Backend API"
+site_description = "Documentation for the Ofertadisciplina project"
+site_author = "treeofmapple"
+license = "GPL-3.0"
+license_url = "https://www.gnu.org/licenses/gpl-3.0.html"
+copyright = """
+Copyright &copy; 2026 The authors @treeofmapple
+Released under the GPL-3.0 License.
+"""
+
+extra_css = ["stylesheets/extra.css"]
+
+plugins = [
+    "awesome-pages"
+]
+
+nav = [
+ { "Get started" = "index.md" },
+ { "Controller" = [
+     { "Admin Controller" = "controller/admin_controller.md" },
+     { "Aluno Controller" = "controller/aluno_controller.md" },
+     { "Anonymous Controller" = "controller/anonymous_controller.md" },
+     { "Disciplina Controller" = "controller/disciplina_controller.md" },
+     { "Disponibilidade Controller" = "controller/disponibilidade_controller.md" },
+     { "Interesse Controller" = "controller/interesse_controller.md" },
+     { "Professor Controller" = "controller/professor_controller.md" },
+     { "User Controller" = "controller/user_controller.md" },
+ ] },
+     { "Security" = [
+        { "Models" = [
+            { "User" = "security/model/user.md" },
+            { "Token" = "security/model/token.md" },
+        ] },
+        { "Enums" = [
+            { "Permission" = "security/enums/permission.md" },
+            { "Role" = "security/enums/role.md" },
+            { "Token Type" = "security/enums/token_type.md" },
+        ] },
+        { "Service" = [
+            { "Utils" = [
+                { "User Sort Interaction" = "logic/search/user_sort.md" },
+            ] },
+            { "User Service" = "security/service/user_service.md" },
+            { "Authentication Service" = "security/service/auth_service.md" },
+            { "Admin Service" = "security/service/admin_service.md" },
+        ] },
+        { "Component" = [
+            { "Cookies" = "component/cookies.md" },
+            { "Token" = "component/token.md" },
+            { "User" = "component/user.md" },
+        ] },
+     ] },
+     { "Professor" = [
+        { "Model" = [
+            { "Professor" = "professor/model/professor.md" },
+            { "Interesse Disciplina" = "professor/model/interesse_disciplina.md" },
+            { "Disponibilidade" = "professor/model/disponibilidade.md" },
+            { "Horario Aula" = "professor/model/horario_aula.md" },
+        ] },
+        { "Enums" = [
+            { "Dia" = "professor/enum/dia.md" },
+        ] },
+        { "Utils" = [
+            { "Disponibilidade Componente" = "professor/utils/disponibilidade_component.md" },
+            { "Interesse Componente" = "professor/utils/interesse_component.md" },
+            { "Professor Componente" = "professor/utils/professor_component.md" },
+        ] },
+        { "Service" = [
+            { "Disponibilidade Service" = "professor/service/disponibilidade_service.md" },
+            { "Interesse Service" = "professor/service/interesse_service.md" },
+            { "Professor Service" = "professor/service/professor_service.md" },
+        ] },
+     ] },
+     { "Aluno" = [
+         { "Model" = [
+             { "Aluno" = "aluno/aluno.md" },
+         ] },
+         { "Service" = [
+             { "Aluno Service" = "aluno/aluno_service.md" },
+         ] },
+     ] },
+     { "Academico" = [
+         { "Model" = [
+             { "Disciplina" = "disciplina/disciplina.md" },
+         ] },
+         { "Service" = [
+            { "Disciplina Service" = "disciplina/disciplina_service.md" },
+            { "Disciplina Component" = "disciplina/disciplina_component.md" },
+         ] },
+     ] },
+ { "Logic" = [
+     { "Security" = [
+         { "Jwt Authentication" = "logic/security/jwt_authentication.md" },
+         { "Jwt Service" = "logic/security/jwt_service.md" },
+         { "Logout Utils" = "logic/security/logout_utils.md" },
+     ] },
+     { "Auditing" = "logic/auditing.md" },
+     { "Caching" = [
+         { "Login Attempt" = "login/caching/login_attempt.md" },
+         { "Profile Cache" = "login/caching/profile_cache.md" },
+     ] },
+     { "Scheduled" = [
+         { "Token Cleanup Job" = "login/scheduled/token_cleanup.md" },
+     ] },
+ ] },
+ { "Config" = [
+     { "Cache" = "config/cache.md" },
+     { "Cors" = "config/cors.md" },
+     { "Hazel" = "config/hazel.md" },
+     { "Quartz" = "config/quartz.md" },
+     { "System" = "config/system.md" },
+     { "Web Security Config" = "config/web_security_config.md" },
+ ] },
+ { "Yml Application Configurations" = [
+     { "Production Environment Variables" = "variables/production_env.md" },
+     { "Test Environment Variables" = "variables/test_env.md" },
+ ] },
+]
+
+[project.theme]
+name = "zensical"
+favicon = "images/icons/onibus.png"
+
+language = "en"
+
+features = [
+    "announce.dismiss",
+    "content.code.annotate",
+    "content.code.copy",
+    "content.code.select",
+    "content.footnote.tooltips",
+    "content.tabs.link",
+    "content.tooltips",
+    "navigation.footer",
+    "navigation.indexes",
+    "navigation.instant",
+    "navigation.instant.prefetch",
+    "navigation.path",
+    "navigation.sections",
+    "navigation.top",
+    "navigation.tracking",
+    "search.highlight",
+]
+
+[[project.theme.palette]]
+scheme = "default"
+toggle.icon = "lucide/sun"
+toggle.name = "Switch to dark mode"
+
+[[project.theme.palette]]
+scheme = "slate"
+toggle.icon = "lucide/moon"
+toggle.name = "Switch to light mode"
+
+[project.theme.font]
+text = "Inter"
+code = "Jetbrains Mono"

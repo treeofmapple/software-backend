@@ -1,0 +1,15 @@
+spring:
+  config:
+    activate:
+      on-profile: cluster
+cache:
+  cluster-name: ofertadesoftware-cluster
+  address: ${CACHE_ADDRESS}
+  chances:
+    profile:
+      max-attempts: ${PROFILE_ATTEMPTS:3}
+    login:
+      max-attempts: ${LOGIN_ATTEMPTS:10}
+  time:
+    login-attempt: ${LOGIN_CACHE_TIME:10m}
+    profile-register: ${REGISTER_CACHE_TIME:72h}

@@ -1,0 +1,30 @@
+services:
+  #ofertadisciplina:
+  #  build:
+  #    context: .
+  #    dockerfile: Dockerfile
+  #  restart: unless-stopped
+  #  ports:
+  #    - "${OFERTA_PORT:-8000}:${OFERTA_PORT:-8000}"
+  #  depends_on:
+  #    - postgres
+  #  env_file:
+  #    - .env
+
+  postgres:
+    image: postgres:16
+    container_name: ofertadisciplina-database
+    restart: unless-stopped
+    ports:
+      - "${DB_PORT:-5432}:${DB_PORT:-5432}"
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_DATABASE}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    env_file:
+      - .env
+
+volumes:
+  postgres_data:

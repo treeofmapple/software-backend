@@ -1,0 +1,242 @@
+{"properties": [
+  {
+    "name": "spring.testcontainers.reuse.enable",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.testcontainers.reuse.enable'"
+  },
+  {
+    "name": "application.cors.allowed-origins",
+    "type": "java.lang.String",
+    "description": "A description for 'application.cors.allowed-origins'"
+  },
+  {
+    "name": "test.database.reuse",
+    "type": "java.lang.Boolean",
+    "description": "A description for 'test.database.reuse'"
+  },
+  {
+    "name": "testcontainers.reuse.enable",
+    "type": "java.lang.String",
+    "description": "A description for 'testcontainers.reuse.enable'"
+  },
+  {
+    "name": "application.cors.time",
+    "type": "java.lang.String",
+    "description": "A description for 'application.cors.time'"
+  },
+  {
+    "name": "settings.security.generated.user",
+    "type": "java.lang.String",
+    "description": "A description for 'settings.security.generated.user'"
+  },
+  {
+    "name": "settings.security.generated.email",
+    "type": "java.lang.String",
+    "description": "A description for 'settings.security.generated.email'"
+  },
+  {
+    "name": "application.page.size",
+    "type": "java.lang.String",
+    "description": "A description for 'application.page.size'"
+  },
+  {
+    "name": "settings.security.generated.password",
+    "type": "java.lang.String",
+    "description": "A description for 'settings.security.generated.password'"
+  },
+  {
+    "name": "application.security.secret-key",
+    "type": "java.lang.String",
+    "description": "A description for 'application.security.secret-key'"
+  },
+  {
+    "name": "application.security.expiration",
+    "type": "java.lang.String",
+    "description": "A description for 'application.security.expiration'"
+  },
+  {
+    "name": "application.security.refresh-token",
+    "type": "java.lang.String",
+    "description": "A description for 'application.security.refresh-token'"
+  },
+  {
+    "name": "application.front.csrf",
+    "type": "java.lang.String",
+    "description": "A description for 'application.front.csrf'"
+  },
+  {
+    "name": "application.security.test-key",
+    "type": "java.lang.String",
+    "description": "A description for 'application.security.test-key'"
+  },
+  {
+    "name": "loki.url",
+    "type": "java.lang.String",
+    "description": "A description for 'loki.url'"
+  },
+  {
+    "name": "sheduled.cleanup",
+    "type": "java.lang.String",
+    "description": "A description for 'sheduled.cleanup'"
+  },
+  {
+    "name": "settings.cors.allowed-origins",
+    "type": "java.lang.String",
+    "description": "A description for 'settings.cors.allowed-origins'"
+  },
+  {
+    "name": "settings.cors.max-age",
+    "type": "java.lang.String",
+    "description": "A description for 'settings.cors.max-age'"
+  },
+  {
+    "name": "settings.security.user",
+    "type": "java.lang.String",
+    "description": "A description for 'settings.security.user'"
+  },
+  {
+    "name": "settings.security.email",
+    "type": "java.lang.String",
+    "description": "A description for 'settings.security.email'"
+  },
+  {
+    "name": "settings.security.password",
+    "type": "java.lang.String",
+    "description": "A description for 'settings.security.password'"
+  },
+  {
+    "name": "scheduled.token-cleanup",
+    "type": "java.lang.String",
+    "description": "A description for 'scheduled.token-cleanup'"
+  },
+  {
+    "name": "application.size.page",
+    "type": "java.lang.String",
+    "description": "A description for 'application.size.page'"
+  },
+  {
+    "name": "security.https-only",
+    "type": "java.lang.String",
+    "description": "A description for 'security.https-only'"
+  },
+  {
+    "name": "security.front.csrf",
+    "type": "java.lang.String",
+    "description": "A description for 'security.front.csrf'"
+  },
+  {
+    "name": "security.tokens.secret-key",
+    "type": "java.lang.String",
+    "description": "A description for 'security.tokens.secret-key'"
+  },
+  {
+    "name": "security.tokens.expiration",
+    "type": "java.lang.String",
+    "description": "A description for 'security.tokens.expiration'"
+  },
+  {
+    "name": "security.tokens.refresh-token",
+    "type": "java.lang.String",
+    "description": "A description for 'security.tokens.refresh-token'"
+  },
+  {
+    "name": "cookies.security.cookie-name",
+    "type": "java.lang.String",
+    "description": "A description for 'cookies.security.cookie-name'"
+  },
+  {
+    "name": "cookies.security.same-site",
+    "type": "java.lang.String",
+    "description": "A description for 'cookies.security.same-site'"
+  },
+  {
+    "name": "cookies.security.secure",
+    "type": "java.lang.String",
+    "description": "A description for 'cookies.security.secure'"
+  },
+  {
+    "name": "cache.chances.max-attempts",
+    "type": "java.lang.String",
+    "description": "A description for 'cache.chances.max-attempts'"
+  },
+  {
+    "name": "cache.time.login-attempt",
+    "type": "java.lang.String",
+    "description": "A description for 'cache.time.login-attempt'"
+  },
+  {
+    "name": "cache.name.login-attempt",
+    "type": "java.lang.String",
+    "description": "A description for 'cache.name.login-attempt'"
+  },
+  {
+    "name": "logging.loki.enabled",
+    "type": "java.lang.String",
+    "description": "A description for 'logging.loki.enabled'"
+  },
+  {
+    "name": "logging.loki.url",
+    "type": "java.lang.String",
+    "description": "A description for 'logging.loki.url'"
+  },
+  {
+    "name": "application.email-regex",
+    "type": "java.lang.String",
+    "description": "A description for 'application.email-regex'"
+  },
+  {
+    "name": "cache.cluster-name",
+    "type": "java.lang.String",
+    "description": "A description for 'cache.cluster-name'"
+  },
+  {
+    "name": "cache.chances.profile.max-attempts",
+    "type": "java.lang.String",
+    "description": "A description for 'cache.chances.profile.max-attempts'"
+  },
+  {
+    "name": "cache.chances.login.max-attempts",
+    "type": "java.lang.String",
+    "description": "A description for 'cache.chances.login.max-attempts'"
+  },
+  {
+    "name": "cache.time.profile-register",
+    "type": "java.lang.String",
+    "description": "A description for 'cache.time.profile-register'"
+  },
+  {
+    "name": "cache.name.profile-register",
+    "type": "java.lang.String",
+    "description": "A description for 'cache.name.profile-register'"
+  },
+  {
+    "name": "security.types.access-id",
+    "type": "java.lang.String",
+    "description": "A description for 'security.types.access-id'"
+  },
+  {
+    "name": "security.types.refresh-id",
+    "type": "java.lang.String",
+    "description": "A description for 'security.types.refresh-id'"
+  },
+  {
+    "name": "security.tokens.types.access-id",
+    "type": "java.lang.String",
+    "description": "A description for 'security.tokens.types.access-id'"
+  },
+  {
+    "name": "security.tokens.types.refresh-id",
+    "type": "java.lang.String",
+    "description": "A description for 'security.tokens.types.refresh-id'"
+  },
+  {
+    "name": "security.tokens.base-path",
+    "type": "java.lang.String",
+    "description": "A description for 'security.tokens.base-path'"
+  },
+  {
+    "name": "cache.address",
+    "type": "java.lang.String",
+    "description": "A description for 'cache.address'"
+  }
+]}

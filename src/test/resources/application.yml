@@ -1,0 +1,12 @@
+testcontainers:
+  reuse:
+    enable: true
+    
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+
+application:
+  security:
+    secret-key: ${TEST_JWT_SECRET_KEY:VGhpcy1pcy1hLXNlY3JldC1rZXktZm9yLXRlc3RzMTIzNDU2}

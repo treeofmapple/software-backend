@@ -1,0 +1,70 @@
+spring:
+  jackson:
+      date-format: dd/MM/yyyy
+  profiles:
+    active: config, ${PROFILE:test}
+    group: 
+      prod: ${CACHE_MODE:} # cluster
+  application:
+    name: ofertadisciplina
+
+server:
+  port: ${OFERTA_PORT:8000}
+  forward-headers-strategy: framework
+  error:
+    include-stacktrace: never
+    include-message: always
+
+  
+cookies:
+  security:
+    cookie-name: _adaptative_stored_int_ # Refresh Token Cookie Name
+    same-site: "Lax"
+    secure: true
+    
+cache:
+  name:
+    login-attempt: "login-attempt-cache"
+    profile-register: "profile-register-cache"
+    
+management:
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include: "health, prometheus"
+  endpoint:
+    health:
+      show-details: always
+    prometheus:
+      access: unrestricted
+
+  tracing:
+    sampling:
+      probability: 1.0
+
+  metrics:
+    tags:
+      application: ${spring.application.name}
+    distribution:
+      percentiles-histogram:
+        http:
+          server:
+            requests: true
+
+  prometheus:
+    metrics:
+      export:
+        enabled: true
+
+logging:
+  pattern:
+    console: '%n %d{HH:mm:ss} | %highlight(%-5level) | %cyan(%logger{30}) | %msg'
+  level:
+    root: INFO
+    org:
+      springframework: warn
+      boot: error
+  loki:
+    enabled: ${LOKI_ENABLED:false}
+    url: ${LOKI_URL:http://localhost:3100/loki/api/v1/push}  
