@@ -9,6 +9,9 @@ public record DisciplinaRequest(
 		@NotBlank(message = "Nome da disciplina não pode ficar vazio")
 		String nome,
 		
+		@NotNull(message = "Codigo não pode ficar vazio")
+		String codigo,
+		
 		@NotNull(message = "Carga horaria não pode ficar vazia")
 		@Positive(message = "Carga horaria deve ser maior que 0")
 		Integer cargaHoraria,

@@ -21,10 +21,16 @@ public class DisciplinaComponent {
 				() -> new NotFoundException(String.format("Disciplina with id: %s, doens't exist.", query)));
 	}
 
-	public void ensureNomeAreUnique(String nome) {
-		if(repository.existsByNome(nome)) {
+	public void ensureNomeIsUnique(String nome) {
+		if (repository.existsByNome(nome)) {
 			throw new DataViolationException("Nome is already in use: " + nome);
 		}
 	}
-	
+
+	public void ensureCodigoIsUnique(String codigo) {
+		if (repository.existsByCodigo(codigo)) {
+			throw new DataViolationException("Codigo is already in use: " + codigo);
+		}
+	}
+
 }

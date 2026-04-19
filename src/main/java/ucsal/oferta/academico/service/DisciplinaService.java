@@ -54,7 +54,8 @@ public class DisciplinaService {
 
 	@Transactional
 	public DisciplinaResponse createDisciplina(DisciplinaRequest request) {
-		component.ensureNomeAreUnique(request.nome());
+		component.ensureNomeIsUnique(request.nome());
+		component.ensureCodigoIsUnique(request.codigo());
 		var disciplina = mapper.build(request);
 		repository.save(disciplina);
 		return mapper.toResponse(disciplina);

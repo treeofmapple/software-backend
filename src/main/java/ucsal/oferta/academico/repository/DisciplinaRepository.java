@@ -14,11 +14,13 @@ import ucsal.oferta.academico.model.Disciplina;
 public interface DisciplinaRepository extends JpaRepository<Disciplina, UUID>, JpaSpecificationExecutor<Disciplina> {
 
 	Optional<Disciplina> findByCodigo(String codigo);
-	
+
 	Optional<Disciplina> findByNome(String nome);
 
 	List<Disciplina> findByNomeIn(List<String> nomes);
-	
+
 	boolean existsByNome(String nome);
+
+	boolean existsByCodigo(String codigo);
 
 }
