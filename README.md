@@ -1,27 +1,31 @@
 # Guia de Execução: Oferta de Software
 
-Este guia apresenta as instruções simplificadas para configurar e executar o projeto, seja para testes rápidos de desenvolvimento ou para um ambiente de produção completo.
+Este guia apresenta as instruções simplificadas para configurar e executar o projeto, abrangendo desde testes rápidos de desenvolvimento sem dependências externas até um ambiente de produção completo.
 
 ---
 
 ## 1. Pré-requisitos
 
-Para rodar o ambiente completo da aplicação, você precisará das seguintes ferramentas:
+Para trabalhar com o projeto, você precisará de algumas ferramentas básicas:
 
 - **Mise** (Gerenciador de tarefas e ambiente)
     
 - **Maven 3**
     
-- **Docker** (Necessário para os serviços de banco de dados e ambiente em contêiner)
+- **Docker** (Necessário apenas para rodar os serviços de banco de dados e o ambiente em contêiner no modo de produção)
     
 
-> **Nota:** Se o seu objetivo for apenas testar a aplicação de forma rápida e local, você precisará ter instalado apenas o **Mise** (ou o Maven diretamente).
+> **Nota:** Se o seu objetivo for apenas testar a aplicação localmente, você precisará ter instalado apenas o **Mise** (ou o Maven diretamente).
 
 ---
 
 ## 2. Configuração das Variáveis de Ambiente
 
-Antes de executar o projeto, você deve configurar suas variáveis de ambiente. Crie um arquivo chamado `.env` na raiz do projeto (utilizando as propriedades do arquivo `.env.sample` como base) e preencha com as configurações abaixo:
+O comportamento do sistema muda de acordo com as variáveis configuradas. Para configurar seu ambiente, crie um arquivo chamado `.env` na raiz do projeto, utilizando o arquivo `.env.sample` como base.
+
+### Variáveis para o Modo de Produção:
+
+Se você for rodar o ambiente completo com o banco de dados PostgreSQL, preencha o arquivo com as seguintes configurações:
 
 Snippet de código
 
@@ -40,39 +44,54 @@ ADMIN_EMAIL=admin@admin.com
 ADMIN_PASSWORD=admin
 ```
 
-### Entendendo as Variáveis:
+- **DB_HOST:** Utilize `localhost` se for rodar o projeto localmente pelo Mise/Maven. Se for rodar tudo através do Docker, altere para `postgres`.
+    
+- **Usuário Admin:** O sistema criará um administrador usando `ADMIN_USER`, `ADMIN_EMAIL` e `ADMIN_PASSWORD` na inicialização. Qualquer alteração nessas variáveis criará um novo administrador ao reiniciar o sistema.
+    
 
-- **DB_HOST:** Define o endereço do banco de dados. Utilize `localhost` se for rodar o projeto localmente pelo Mise/Maven. Se for rodar a aplicação através do Docker, altere para `postgres`.
-    
-- **OFERTA_PORT:** É a porta na qual o serviço do backend será executado.
-    
-- **KEYS_PATH:** Diretório onde o sistema criará ou buscará as chaves criptográficas usadas para validar os tokens de acesso de usuários.
-    
-- **Usuário Admin:** Toda vez que o sistema iniciar, ele criará um usuário administrador usando os valores definidos em `ADMIN_USER`, `ADMIN_EMAIL` e `ADMIN_PASSWORD`. Se você alterar esses valores no `.env` e reiniciar o sistema, um novo administrador será criado no banco.
-    
-- **Banco de Dados de Teste:** O sistema pode ser executado em modo de teste. Nesse modo, ele ignora o PostgreSQL externo e sobe um banco em memória (H2 simulando o modelo do PostgreSQL), garantindo que o frontend continue operando normalmente para testes rápidos.
-    
+### Variáveis para o Modo de Teste (Simplificado):
+
+Se você deseja apenas executar o código para testes, **não é necessário** preencher as variáveis de conexão com o banco de dados de produção. Basta configurar o perfil da aplicação:
+
+Snippet de código
+
+```
+PROFILE=test
+OFERTA_PORT=8000
+KEYS_PATH=keys
+```
+
+Neste cenário, a aplicação ignora o PostgreSQL externo e sobe um banco em memória local (H2, simulando o modelo do PostgreSQL). Isso garante que o backend e o frontend funcionem normalmente sem a necessidade de contêineres ou configurações avançadas.
 
 ---
 
 ## 3. Como Executar
 
-O projeto utiliza o arquivo `mise.toml` para padronizar e facilitar a execução de comandos. Você pode escolher rodar a aplicação de duas formas principais:
+O projeto utiliza o arquivo `mise.toml` para padronizar e facilitar a execução de comandos. Escolha a opção que melhor se adapta à sua necessidade no momento:
 
-### Opção A: Execução Local (Testes e Desenvolvimento)
+### Opção A: Execução Rápida (Modo de Teste)
 
-Esta é a maneira mais rápida de rodar e testar o código da aplicação de forma independente, utilizando apenas o Maven por baixo dos panos.
+A maneira mais ágil de validar o código. Utilizando o perfil de teste no `.env`, você não precisa se preocupar com o banco de dados.
 
 |**Ação**|**Comando**|**Descrição**|
 |---|---|---|
-|**Executar o sistema**|`mise run run`|Sobe a aplicação Spring Boot na porta especificada.|
+|**Executar o sistema**|`mise run run`|Sobe a aplicação Spring Boot (com banco H2 em memória) na porta especificada.|
+
+### Opção B: Execução Local (Modo de Produção)
+
+Ideal para desenvolver testando a integração com um banco de dados real, rodando a aplicação na sua máquina e o banco via Docker.
+
+|**Ação**|**Comando**|**Descrição**|
+|---|---|---|
+|**Subir o Banco**|`mise run postgres_up`|Inicia apenas o contêiner do PostgreSQL em segundo plano.|
+|**Executar o sistema**|`mise run run`|Sobe a aplicação conectando-se ao PostgreSQL local.|
 |**Gerar o Build**|`mise run build`|Compila o projeto sem rodar os testes unitários.|
 
-### Opção B: Execução via Docker (Produção ou Ambiente Completo)
+### Opção C: Execução via Docker (Ambiente Completo)
 
-Utilize estes comandos para rodar a aplicação junto com o banco de dados em contêineres.
+Utilize estes comandos para rodar toda a infraestrutura (aplicação e banco de dados) isolada em contêineres. Lembre-se de ajustar o `DB_HOST` para `postgres` no `.env`.
 
 |**Ação**|**Comando**|**Descrição**|
 |---|---|---|
-|**Iniciar o Ambiente**|`mise run docker_run`|Constrói a imagem e sobe a aplicação e o banco em segundo plano.|
-|**Parar o Ambiente**|`mise run docker_stop`|Encerra os processos e derruba os contêineres do Docker.|
+|**Iniciar o Ambiente**|`mise run docker_run`|Constrói a imagem da aplicação e sobe junto com o banco em segundo plano.|
+|**Parar o Ambiente**|`mise run docker_stop`|Encerra os processos e derruba todos os contêineres do Docker Compose.|
