@@ -8,4 +8,6 @@ public record EquipamentoDTO(
         TipoEquipamento tipoEquipamento,
         String descricao,
         String observacao
-    ) {}
+) {
+	
+}

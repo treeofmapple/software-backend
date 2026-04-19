@@ -1,14 +1,17 @@
 package ucsal.oferta.infraestrutura.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import ucsal.oferta.exception.sql.NotFoundException;
 import ucsal.oferta.infraestrutura.dto.EspacoDTO;
 import ucsal.oferta.infraestrutura.model.Espaco;
 import ucsal.oferta.infraestrutura.model.validation.EspacoValidation;
 import ucsal.oferta.infraestrutura.repository.EspacoRepository;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
@@ -53,18 +56,20 @@ public class EspacoService {
         if (espacoValidation.existeId(dto)) {
             // caso exista, a função deleta
             espacoRepository.delete(new Espaco(dto));
-            return find(dto);
+            return find(dto.id());
         }
         // caso não exista, ele retorna null
         return null;
     }
 
     // acha o Id do espaço
-    public Espaco find(EspacoDTO dto) {
-        // caso o id do espaco exista, eu retorno o objeto espacoDto, caso não exista eu
-        // retorno null
-        return (espacoValidation.existeId(dto) ? espacoRepository.findById(dto.id()).get() : null);
-    }
+	@Transactional(readOnly = true)
+	public Espaco find(Long query) {
+		// caso o id do espaco exista, eu retorno o objeto espacoDto, caso não exista eu
+		// retorno null
+		return espacoRepository.findById(query)
+				.orElseThrow(() -> new NotFoundException("Espaco com id: " + query + " não foi encontrado"));
+	}
 
     public List<Espaco> findAll() {
         return espacoRepository.findAll();

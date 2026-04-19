@@ -43,10 +43,6 @@ public class AdminService {
 	
 	private final SecurityUtils securityUtils;
 
-	// ADD Questions
-	
-	// Remove Questions
-	
 	@Transactional
 	public AdminUserResponse registerAdmin(AdminRegisterRequest request) {
 		var userIp = securityUtils.getRequestingClientIp();

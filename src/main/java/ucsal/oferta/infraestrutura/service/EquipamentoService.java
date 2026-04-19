@@ -5,7 +5,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import ucsal.oferta.exception.sql.NotFoundException;
 import ucsal.oferta.infraestrutura.dto.EquipamentoDTO;
 import ucsal.oferta.infraestrutura.model.Equipamento;
 import ucsal.oferta.infraestrutura.model.validation.EquipamentoValidation;
@@ -54,14 +56,16 @@ public class EquipamentoService {
 		// deleta somente se o equipamento existir
 		if (equipamentoValidation.existeId(dto)) {
 			equipamentoRepository.delete(new Equipamento(dto));
-			return find(dto);
+			return find(dto.id());
 		}
 		return null;
 	}
 
 	// acha apensar um equipamento
-	public Equipamento find(EquipamentoDTO dto) {
-		return (equipamentoValidation.existeId(dto) ? equipamentoRepository.findById(dto.id()).get() : null);
+	@Transactional(readOnly = true)
+	public Equipamento find(Long query) {
+		return equipamentoRepository.findById(query)
+				.orElseThrow(() -> new NotFoundException("Equipamento com id " + query + " não foi encontrado."));
 	}
 
 	// retorna uma lista de equipamentos

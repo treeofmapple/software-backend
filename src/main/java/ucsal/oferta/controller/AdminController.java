@@ -29,6 +29,10 @@ public class AdminController {
 
 	private final AdminService adminService;
 
+	// ADD Questions
+	
+	// Remove Questions
+	
 	@PostMapping(value = "/register")
 	@ResponseStatus(HttpStatus.CREATED)
 	public AdminUserResponse registerAnUserAsAdmin(@RequestBody @Valid AdminRegisterRequest request) {

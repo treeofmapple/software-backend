@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,7 +26,7 @@ import ucsal.oferta.infraestrutura.service.EquipamentoService;
  *       ``` Write me later ```
  */
 @RestController
-@RequestMapping("/equipamento")
+@RequestMapping("/v1/equipamento")
 // admin or professor
 
 public class EquipamentoController {
@@ -33,9 +34,9 @@ public class EquipamentoController {
 	@Autowired
 	private EquipamentoService equipamentoService;
 
-	@GetMapping
-	public Equipamento find(@RequestBody @Valid EquipamentoDTO dto) {
-		return equipamentoService.find(dto);
+	@GetMapping(value = "/{id}")
+	public Equipamento find(@PathVariable(value = "id") Long query) {
+		return equipamentoService.find(query);
 	}
 
 	@GetMapping("/all")

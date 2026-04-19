@@ -5,7 +5,6 @@ import java.util.UUID;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -18,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import ucsal.oferta.security.dto.user.DeleteAccountRequest;
 import ucsal.oferta.security.dto.user.PageUserResponse;
 import ucsal.oferta.security.dto.user.PasswordUpdateRequest;
 import ucsal.oferta.security.dto.user.PersonalUserResponse;
@@ -64,10 +62,13 @@ public class UserController {
 		userService.changeUserPassword(request, httpResponse);
 	}
 
+	/*
+	
 	@DeleteMapping
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void removeMyAccount(@RequestBody @Valid DeleteAccountRequest request, HttpServletResponse httpResponse) {
 		userService.removeMyAccount(request, httpResponse);
 	}
 
+    */
 }

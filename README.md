@@ -95,3 +95,6 @@ Utilize estes comandos para rodar toda a infraestrutura (aplicação e banco de 
 |---|---|---|
 |**Iniciar o Ambiente**|`mise run docker_run`|Constrói a imagem da aplicação e sobe junto com o banco em segundo plano.|
 |**Parar o Ambiente**|`mise run docker_stop`|Encerra os processos e derruba todos os contêineres do Docker Compose.|
+
+
+

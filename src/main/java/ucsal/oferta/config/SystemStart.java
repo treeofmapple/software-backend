@@ -20,13 +20,13 @@ import ucsal.oferta.security.repository.UserRepository;
 @RequiredArgsConstructor
 public class SystemStart implements CommandLineRunner {
 
-	@Value("${settings.security.user:useradmin}")
+	@Value("${settings.security.user:admin}")
 	private String username;
 
-	@Value("${settings.security.email:useradmin@mail.com}")
+	@Value("${settings.security.email:admin@admin.com}")
 	private String email;
 
-	@Value("${settings.security.password:useradmin123}")
+	@Value("${settings.security.password:admin}")
 	private String password;
 
 	private final UserRepository repository;
